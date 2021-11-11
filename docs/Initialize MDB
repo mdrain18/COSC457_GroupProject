@@ -1,0 +1,19 @@
+Procedure
+---------
+ 1. Double check if you have PostgreSQL installed on your computer
+        unix> psql --version
+        psql (PostgreSQL) 9.6.23
+
+ 2. If you see the above response, then proceed, otherwise revisit the Dev Environment Setup guides
+
+ 3. Execute the following commands: copy and paste works best (don't forget the ";" after each line)
+        unix> psql -U postgres -h localhost
+
+        drop database crmdb;
+
+        create database crmdb;
+        create user app1_user with password 'secret';
+        grant all privileges on database crmdb to app1_user;
+        alter database crmdb     SET search_path=crmdb;
+        alter role     app1_user      SET search_path=crmdb;
+        \q

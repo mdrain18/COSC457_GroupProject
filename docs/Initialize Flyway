@@ -1,0 +1,47 @@
+Procedure
+---------
+ 1. Execute the following: (might have more Versions)
+    unix> cd ~/intellijProjects/COSC484Group1_Project
+    unix> mvn clean install
+
+    unix> cd backend
+    unix> mvn flyway:info
+
+        [INFO]
+        [INFO] --- flyway-maven-plugin:6.5.7:info (default-cli) @ database-migration ---
+        [INFO] Flyway Community Edition 6.5.7 by Boxfuse
+        [INFO] Database: jdbc:postgresql://localhost:5432/crmdb (PostgreSQL 9.6)
+        [INFO] Schema version: << Empty Schema >>
+        [INFO]
+        [INFO]
+        +-----------+---------+-------------+------+--------------+---------+
+        | Category  | Version | Description | Type | Installed On | State   |
+        +-----------+---------+-------------+------+--------------+---------+
+        | Versioned | 1.1     | baseline    | SQL  |              | Pending |
+        +-----------+---------+-------------+------+--------------+---------+
+
+
+ 2. Upgrade your database to latest version
+    unix> mvn flyway:migrate
+
+
+ 3. Now, look at the info.  You should see this: (or more versions)
+    unix> mvn flyway:info
+
+       [INFO] --- flyway-maven-plugin:6.5.7:info (default-cli) @ database-migration ---
+       [INFO] Flyway Community Edition 6.5.7 by Boxfuse
+       [INFO] Database: jdbc:postgresql://localhost:5432/crmdb (PostgreSQL 9.6)
+       [INFO] Schema version: 1.1
+       [INFO]
+       [INFO] +-----------+---------+------------------------------+--------+---------------------+---------+
+       | Category  | Version | Description                  | Type   | Installed On        | State   |
+       +-----------+---------+------------------------------+--------+---------------------+---------+
+       |           |         | << Flyway Schema Creation >> | SCHEMA | 2021-11-09 16:46:55 | Success |
+       | Versioned | 1.1     | baseline                     | SQL    | 2021-11-09 16:46:55 | Success |
+       | Versioned | 1.2     | lookup tables                | SQL    | 2021-11-09 16:46:55 | Success |
+       +-----------+---------+------------------------------+--------+---------------------+---------+
+
+
+ 4. Re-initialize your database: do this each time there are updates to the database
+    unix> mvn flyway:clean     # Remove everything from the database
+    unix> mvn flyway:migrate   # Create the tables and sequences to version 1.1
