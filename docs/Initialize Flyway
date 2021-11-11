@@ -1,7 +1,7 @@
 Procedure
 ---------
  1. Execute the following: (might have more Versions)
-    unix> cd ~/intellijProjects/COSC484Group1_Project
+    unix> cd ~/intellijProjects/COSC457_GroupProject
     unix> mvn clean install
 
     unix> cd backend
