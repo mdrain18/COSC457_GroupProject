@@ -1,0 +1,7 @@
+-- insert into clearances (CMID, empID, startDate, endDate)
+--             values (
+--                     CMID,
+--                     empID,
+--                     'startDate',
+--                     'endDate'
+--                    );

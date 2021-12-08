@@ -47,6 +47,15 @@ CREATE TABLE IF NOT EXISTS resumes
     constraint edu_fk foreign key (maxEduID) references eduLvl (eduLvlID)
 );
 
+CREATE TABLE IF NOT EXISTS clearances
+(
+    clearanceID integer NOT NULL,
+    clName      varchar(100) NOT NULL,
+    clDesc      varchar(255) NOT NULL,
+
+    PRIMARY KEY (clearanceID)
+);
+
 CREATE TABLE IF NOT EXISTS contractManager
 (
     CMID      integer NOT NULL,
@@ -181,13 +190,4 @@ CREATE TABLE IF NOT EXISTS resumeCert
     PRIMARY KEY (RCID),
     constraint certID_fk foreign key (certID) references certifications (certID),
     constraint resumeCert_fk foreign key (resumeID) references resumes (resumeID)
-);
-
-CREATE TABLE IF NOT EXISTS clearances
-(
-    clearanceID integer NOT NULL,
-    clName      varchar(100) NOT NULL,
-    clDesc      varchar(255) NOT NULL,
-
-    PRIMARY KEY (clearanceID)
 );

@@ -1,0 +1,6 @@
+-- insert into clearances (clearanceID, clName, clDesc)
+--             values (
+--                     clearanceID,
+--                     'clName',
+--                     'clDesc'
+--                    );

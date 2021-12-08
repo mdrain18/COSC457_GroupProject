@@ -1,0 +1,6 @@
+-- insert into eduLVL (eduLvlID, eduLvlName, eduLvlDesc)
+--             values (
+--                     eduLvlID,
+--                     'eduLvlName',
+--                     'eduLvlDesc'
+--                    )
