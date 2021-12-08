@@ -17,14 +17,18 @@ CREATE TABLE IF NOT EXISTS employee
     country    varchar(50)  NOT NULL,
     hireDate   date         NOT NULL,
     termDate   date,
-    partner    boolean      NOT NULL
+    partner    boolean      NOT NULL,
+
+    PRIMARY KEY (empID)
 );
 
 CREATE TABLE IF NOT EXISTS eduLvl
 (
     eduLvlID    integer NOT NULL,
     eduLvlName  varchar(20) NOT NULL,
-    eduLvlDesc  varchar(100)
+    eduLvlDesc  varchar(100),
+
+    PRIMARY KEY (eduLvlID)
 );
 
 CREATE TABLE IF NOT EXISTS resumes
@@ -36,7 +40,11 @@ CREATE TABLE IF NOT EXISTS resumes
     interviewDate date,
     maxEduID      integer,
     submitDate    date,
-    resumeLoc     varchar(255)
+    resumeLoc     varchar(255),
+
+    PRIMARY KEY (resumeID),
+    constraint emp_fk foreign key (empID) references employee (empID),
+    constraint edu_fk foreign key (maxEduID) references eduLvl (eduLvlID)
 );
 
 CREATE TABLE IF NOT EXISTS contractManager
@@ -44,14 +52,19 @@ CREATE TABLE IF NOT EXISTS contractManager
     CMID      integer NOT NULL,
     empID     integer NOT NULL,
     startDate date    NOT NULL,
-    endDate   date
+    endDate   date,
+
+    PRIMARY KEY (CMID),
+    constraint empCM_fk foreign key (empID) references employee (empID)
 );
 
 CREATE TABLE IF NOT EXISTS sponsors
 (
     sponsorID   integer      NOT NULL,
     sponsorName varchar(255) NOT NULL,
-    sponsorDesc varchar(255) NOT NULL
+    sponsorDesc varchar(255) NOT NULL,
+
+    PRIMARY KEY (sponsorID)
 );
 
 CREATE TABLE IF NOT EXISTS contracts
@@ -64,7 +77,11 @@ CREATE TABLE IF NOT EXISTS contracts
     startDate      date         NOT NULL,
     renewalDate    date         NOT NULL,
     activeContract boolean      NOT NULL,
-    endDate        date
+    endDate        date,
+
+    PRIMARY KEY (contractID),
+    constraint cmid_fk foreign key (CMID) references contractManager (CMID),
+    constraint sponsor_fk foreign key (sponsorID) references sponsors (sponsorID)
 );
 
 CREATE TABLE IF NOT EXISTS taskOrders
@@ -73,7 +90,10 @@ CREATE TABLE IF NOT EXISTS taskOrders
     contractID integer      NOT NULL,
     taskName   varchar(100) NOT NULL,
     taskDescr  varchar(255) NOT NULL,
-    SOWID      varchar(100)
+    SOWID      varchar(100),
+
+    PRIMARY KEY (TOID),
+    constraint contract_fk foreign key (contractID) references contracts (contractID)
 );
 
 CREATE TABLE IF NOT EXISTS empContract
@@ -82,13 +102,19 @@ CREATE TABLE IF NOT EXISTS empContract
     contractID integer NOT NULL,
     empID      integer NOT NULL,
     startDate  date    NOT NULL,
-    endDate    date    NOT NULL
+    endDate    date    NOT NULL,
+
+    PRIMARY KEY (ECID),
+    constraint contactEmp_fk foreign key (contractID) references contracts (contractID),
+    constraint empID_fk foreign key (empID) references employee (empID)
 );
 
 CREATE TABLE IF NOT EXISTS skills
 (
     skillID   integer      NOT NULL,
-    skillDesc varchar(255) NOT NULL
+    skillDesc varchar(255) NOT NULL,
+
+    PRIMARY KEY (skillID)
 );
 
 CREATE TABLE IF NOT EXISTS resumeSkills
@@ -96,7 +122,11 @@ CREATE TABLE IF NOT EXISTS resumeSkills
     RSID     integer NOT NULL,
     resumeID integer NOT NULL,
     skillID  integer NOT NULL,
-    RSRank   integer NOT NULL   --RSRank is ...
+    RSRank   integer NOT NULL,   --RSRank is ...
+
+    PRIMARY KEY (RSID),
+    constraint resumeID_fk foreign key (resumeID) references resumes (resumeID),
+    constraint skill_fk foreign key (skillID) references skills (skillID)
 );
 
 CREATE TABLE IF NOT EXISTS laborCategories
@@ -109,10 +139,13 @@ CREATE TABLE IF NOT EXISTS laborCategories
     subCatID       integer,
     worksite       varchar(100),
     reqEduLvl      integer,
-    reqClearanceID integer      NOT NULL,
+    reqClearanceID integer      NOT NULL, --reqClearanceID is...
     sinNumber      varchar(100),
     billAmtMin     decimal,
-    billAmtMax     decimal
+    billAmtMax     decimal,
+
+    PRIMARY KEY (LCID),
+    constraint reqEd_fk foreign key (reqEduLvl) references eduLvl (eduLvlID)
 );
 
 CREATE TABLE IF NOT EXISTS contractSkills
@@ -121,13 +154,20 @@ CREATE TABLE IF NOT EXISTS contractSkills
     contractID integer NOT NULL,
     skillID    integer NOT NULL,
     CSRank     integer NOT NULL, --CSRank is ...
-    LCID       integer NOT NULL
+    LCID       integer NOT NULL,
+
+    PRIMARY KEY (CSID),
+    constraint conSkill_fk foreign key (contractID) references contracts (contractID),
+    constraint skillCon_fk foreign key (skillID) references skills (skillID),
+    constraint LCID_fk foreign key (LCID) references laborCategories (LCID)
 );
 
 CREATE TABLE IF NOT EXISTS certifications
 (
     certID   integer      NOT NULL,
-    certDesc varchar(255) NOT NULL
+    certDesc varchar(255) NOT NULL,
+
+    PRIMARY KEY (certID)
 );
 
 CREATE TABLE IF NOT EXISTS resumeCert
@@ -136,5 +176,18 @@ CREATE TABLE IF NOT EXISTS resumeCert
     certID       integer NOT NULL,
     resumeID     integer NOT NULL,
     dateRecieved date,
-    renewalDate  date
+    renewalDate  date,
+
+    PRIMARY KEY (RCID),
+    constraint certID_fk foreign key (certID) references certifications (certID),
+    constraint resumeCert_fk foreign key (resumeID) references resumes (resumeID)
+);
+
+CREATE TABLE IF NOT EXISTS clearances
+(
+    clearanceID integer NOT NULL,
+    clName      varchar(100) NOT NULL,
+    clDesc      varchar(255) NOT NULL,
+
+    PRIMARY KEY (clearanceID)
 );

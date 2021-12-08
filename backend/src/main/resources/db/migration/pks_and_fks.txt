@@ -58,5 +58,5 @@ resumeCert          pk -- RCID
                     fk -- certID (certifications)
                     fk -- resumeID (resumes)
 
-
+clearances          pk -- clearanceID
 
