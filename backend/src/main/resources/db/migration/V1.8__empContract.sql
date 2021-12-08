@@ -1,0 +1,5 @@
+-- insert into contractSkills (ECID, contractID, empID, startDate, endDate)
+--             values (
+--                     ECID, contractID, empID,
+--                     'startDate', 'endDate'
+--                    );

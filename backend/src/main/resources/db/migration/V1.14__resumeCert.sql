@@ -1,0 +1,6 @@
+-- insert into resumeCert (RCID, certID, resumeID, dateRecieved, renewalDate)
+--             values (
+--                     RCID, certID, resumeID,
+--                     'dateRecieved',
+--                     'renewalDate'
+--                    );

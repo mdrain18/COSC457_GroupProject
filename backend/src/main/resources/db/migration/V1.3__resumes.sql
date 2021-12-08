@@ -1,0 +1,6 @@
+-- insert into resumes (resumeID, empID, DateSubmitted, interviewed, interviewDate, maxEduID, submitDate, resumeLoc)
+--             values (
+--                     resumeID, empID, DateSubmitted, TF,
+--                     'interviewDate', maxEduID, 'submitDate',
+--                     'resumeLoc'
+--                    );

@@ -1,0 +1,16 @@
+-- insert into employee (empID, firstName, lastName, middleI, ssn, address1, address2, city, state,
+--                       postalCode, counrty, hireDate, termDate, partner, resumeID)
+--             values (
+--                         empID, 'f', 'n', 'm',
+--                         'ssn',
+--                         'address1',
+--                         'address2',
+--                         'city', 'state',
+--                         'postalCode',
+--                         'country',
+--                         'hireDate',
+--                         'termDate',
+--                         partner,
+--                         resumeID
+--                    );
+

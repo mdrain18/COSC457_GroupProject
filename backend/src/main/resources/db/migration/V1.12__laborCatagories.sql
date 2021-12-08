@@ -1,0 +1,12 @@
+-- insert into laborCatagories (LCID, laborIDNum, LCDesc, reqYearsExp, categoryID, subCatID, worksite, reqEduLvl,
+--                              reqClearanceID, sinNumber, billAmtMin, billAmtMax)
+--             values (
+--                     LCID,
+--                     'laborIDNum',
+--                     'LCDesc',
+--                     reqYearsExp, categoryID, subCatID,
+--                     'worksite',
+--                     reqEduLvl, reqClearance,
+--                     'sinNumber',
+--                     billAmtMin, billAmtMax
+--                    );

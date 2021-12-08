@@ -1,0 +1,4 @@
+-- insert into certifications (certID, certDesc)
+--             values (
+--                     certID, 'certDesc'
+--                    );

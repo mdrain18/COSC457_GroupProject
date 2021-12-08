@@ -1,0 +1,4 @@
+-- insert into contractSkills (CSID, contractID, skillID, CSRank, LCID)
+--             values (
+--                     CSID, contractID, skillID, CSRank, LCID
+--                    );

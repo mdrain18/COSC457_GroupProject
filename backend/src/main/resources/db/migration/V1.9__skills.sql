@@ -1,0 +1,4 @@
+-- insert into certifications (skillID, skillDesc)
+--             values (
+--                     skillID, 'skillDesc'
+--                    );

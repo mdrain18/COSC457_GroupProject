@@ -1,0 +1,11 @@
+-- insert into contracts (contractID, contractName, CMID, classifMinID, sponsorID, startDate,
+--                        renewalDate, activeContract, enddate)
+--             values (
+--                     contractID,
+--                     'contractName',
+--                     CMID, classifMinID, sponsorID,
+--                     'startDate',
+--                     'renewalDate',
+--                     activeContract,
+--                     'enddate'
+--                    );

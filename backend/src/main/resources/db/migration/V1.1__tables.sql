@@ -17,8 +17,14 @@ CREATE TABLE IF NOT EXISTS employee
     country    varchar(50)  NOT NULL,
     hireDate   date         NOT NULL,
     termDate   date,
-    partner    boolean      NOT NULL,
-    resumeID   integer
+    partner    boolean      NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS eduLvl
+(
+    eduLvlID    integer NOT NULL,
+    eduLvlName  varchar(20) NOT NULL,
+    eduLvlDesc  varchar(100)
 );
 
 CREATE TABLE IF NOT EXISTS resumes
@@ -47,6 +53,7 @@ CREATE TABLE IF NOT EXISTS sponsors
     sponsorName varchar(255) NOT NULL,
     sponsorDesc varchar(255) NOT NULL
 );
+
 CREATE TABLE IF NOT EXISTS contracts
 (
     contractID     integer      NOT NULL,
@@ -84,21 +91,12 @@ CREATE TABLE IF NOT EXISTS skills
     skillDesc varchar(255) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS contractSkills
-(
-    CSID       integer NOT NULL,
-    contractID integer NOT NULL,
-    skillID    integer NOT NULL,
-    CSRank     integer NOT NULL,
-    LCID       integer NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS resumeSkills
 (
     RSID     integer NOT NULL,
     resumeID integer NOT NULL,
     skillID  integer NOT NULL,
-    RSRank   integer NOT NULL
+    RSRank   integer NOT NULL   --RSRank is ...
 );
 
 CREATE TABLE IF NOT EXISTS laborCategories
@@ -115,6 +113,15 @@ CREATE TABLE IF NOT EXISTS laborCategories
     sinNumber      varchar(100),
     billAmtMin     decimal,
     billAmtMax     decimal
+);
+
+CREATE TABLE IF NOT EXISTS contractSkills
+(
+    CSID       integer NOT NULL,
+    contractID integer NOT NULL,
+    skillID    integer NOT NULL,
+    CSRank     integer NOT NULL, --CSRank is ...
+    LCID       integer NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS certifications

@@ -1,0 +1,4 @@
+-- insert into resumeSkills (RSID, resumeID, skillID, RSRank)
+--             values (
+--                     RSID, resumeID, skillID, RSRank
+--                    );

@@ -1,0 +1,7 @@
+-- insert into taskOrders (TOID, contractID, taskName, taskDesc, SOWID)
+--             values (
+--                        TOID, contractID,
+--                     'taskName',
+--                     'taskDesc',
+--                     'SOWID'
+--                    );

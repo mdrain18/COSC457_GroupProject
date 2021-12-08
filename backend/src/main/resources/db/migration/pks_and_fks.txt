@@ -1,0 +1,62 @@
+employee            pk -- empID
+
+
+eduLvl              pk -- eduLvlID
+
+
+resumes             pk -- resumeID
+                    fk -- empID (employee)
+                    fk -- maxEduID (eduLvl)
+
+
+contractManager     pk -- CMID
+                    fk -- empID (employee)
+
+
+sponsors            pk -- sponsorID
+
+
+contracts           pk -- contractID
+                    fk -- CMID (contractManager)
+                    fk -- sponserID (sponsors)
+
+
+taskOrders          pk -- TOID
+                    fk -- contractID (contracts)
+
+
+empContract         pk -- ECID
+                    fk -- contractID (contracts)
+                    fk -- empID (employee)
+
+
+skills              pk -- skillID
+
+
+certifications      pk -- certID
+
+
+resumeSkills        pk -- RSID
+                    fk -- resumeID (resumes)
+                    fk -- skillID (skills)
+        ??RSRank
+
+
+laborCategories     pk -- LCID
+                    fk -- reqEduLvl (eduLvl)
+      ??reqClearanceID
+
+
+contractSkills      pk -- CSID
+                    fk -- contractID (contracts)
+                    fk -- skillID (skills)
+                    fk -- LCID (laborCategories)
+      ??CSRank
+
+
+resumeCert          pk -- RCID
+                    fk -- certID (certifications)
+                    fk -- resumeID (resumes)
+
+
+
